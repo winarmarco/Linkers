@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FA-ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/assets/stylesheets/styles.css" />
+    <link rel="stylesheet" href="/assets/stylesheets/common-styles.css" />
+
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id = "overlay" class="overlay"></div>
+
+    <nav class = "nav-bar d-flex flex-row align-center justify-between">
+    <!-- <div id = "sidebar-toggle" class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </div> -->
+      <div class="nav-logo"><h1>Linkers.</h1></div>
+      <ul class="nav-items d-flex flex-row">
+        <li class="nav-link">
+          <button id ="t" href="" class="btn btn-green">Sign in</button>
+        </li>
+        <li class="nav-link">
+          <button href="" class="btn btn-outline btn-green">Sign up</button>
+        </li>
+      </div>
+    </nav>
+
+    <div class="footer-popup">
+      <div class="footer-popup-content">Copied to clipboard</div>
+    </div>
+
+<!-- 
+    <i class="fas fa-link"></i>
+    <i class="fas fa-info-circle"></i>
+    <i class="far fa-share-square"></i>
+    <i class="fas fa-search"></i>
+    <i class="fas fa-times"></i> -->
+    <div id="create-modal" class="modal-wrapper">
+      <div class="modal">
+        <div class="content-header">
+          <span class="close-modal d-flex justify-end"><i class="fas fa-times"></i></span>
+          <h3 class="content-heading">Create new link</h3>
+        </div>
+        <div class="form-wrapper">
+          <form name="myForm" action="">
+              <div class="input-group">
+                  <label class="d-flex input-group-label" for="title">Group title **</label>
+                  <input class="input title bg-light" type="text" name="title">
+              </div>
+              <div name="link-input" class="input-group">
+                  <label class="d-flex input-group-label" for="">Links **</label>
+                  <div class="link-input-group">
+                      <div class="link-input-wrapper bg-light">
+                          <label for="">1.</label>
+                          <input name="link" type="text" placeholder="https://url.com">
+                      </div>
+                      <span class="remove-link-btn"><i class="fas fa-times"></i></span>
+                  </div>
+                  <div class="link-input-group">
+                      <div class="link-input-wrapper bg-light">
+                          <label for="">2.</label>
+                          <input name="link" type="text" placeholder="https://url.com">
+                      </div>
+                      <span class="remove-link-btn"><i class="fas fa-times"></i></span>
+                  </div>
+                  <button name="add-new-link" class="btn btn-outline btn-full">
+                      Add new link <span><i class="fas fa-plus"></i></span>
+                  </button>
+              </div>
+              <div class="input-group">
+                  <label class="d-flex input-group-label" for="">Description (< 100 words)</label>
+                  <textarea name="description" class="input bg-light" rows="12"></textarea>
+              </div>
+  
+              <button type="submit" class="btn btn-green">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="edit-modal" class="modal-wrapper">
+      <div class="modal">
+        <div class="content-header">
+          <span class="close-modal d-flex justify-end"><i class="fas fa-times"></i></span>
+          <h3 class="content-heading">Edit link</h3>
+        </div>
+        <div class="form-wrapper">
+          <form action="">
+              <div class="input-group">
+                  <label class="d-flex input-group-label" for="title">Group title</label>
+                  <input class="input title bg-light" type="text" name="title" id="title">
+              </div>
+              <div name="link-input" class="input-group">
+                  <label class="d-flex input-group-label" for="">Links</label>
+                  <button name="add-new-link" class="btn btn-outline btn-full">
+                      Add new link <span><i class="fas fa-plus"></i></span>
+                  </button>
+              </div>
+              <div class="input-group">
+                  <label class="d-flex input-group-label" for="">Description (< 100 words)</label>
+                  <textarea name="description" id="" class="input bg-light" rows="12"></textarea>
+              </div>
+  
+              <button type="submit" class="btn btn-green">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-modal" class="modal-wrapper">
+      <div class="modal">
+        <div class="content-header">
+          <h3 class="content-heading">Box-shadow w3schools</h3>
+        </div>
+        <div class="view-content">
+          <i class="fas fa-link link-icon"></i>
+          <div class="list">
+              <ul>
+                  <li><a href="https://www.w3schools.com">https://www.w3schools.com</a></li>
+                  <li><a href="https://www.youtube.com">https://www.youtube.com</a></li>
+              </ul>
+          </div>
+          <i class="fas fa-info-circle desc-icon"></i>
+          <div class="desc">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repudiandae explicabo ipsa at perferendis voluptates? Illum nobis sint tenetur officia eligendi reprehenderit dolorem ut pariatur, explicabo exercitationem laudantium ab voluptatum.</p>
+          </div>
+          <div class="content-buttons">
+              <button id = "edit-link-button" class="edit-button btn btn-green">
+                  <i class="fa fa-edit align-self-center justify-self-center"></i>
+                  <span>Edit</span>
+              </button>
+              <button class="share-button btn btn-outline">
+                  <i class="fa fa-share-square align-self-center justify-self-center"></i>
+                  <span>Share</span>
+              </button>
+              <button class="remove-button btn btn-danger-outline">
+                  <i class="fa fa-trash align-self-center justify-self-center"></i>
+                  <span>Remove</span>
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <main class="">
+      <!-- <aside id="sidebar" class="sidebar">
+        <div class="link-folder">
+            <p class="folder selected">School</p>
+            <p class="folder">Travel</p>
+            <p class="folder">School</p>
+            <p class="folder">Travel</p>
+        </div>
+        <div class="folder-button d-flex flex-column">
+            <button class="btn btn-full btn-green">Add new folder</button>
+            <button class="btn btn-full btn-outline">Edit folder</button>
+            <button class="btn btn-full btn-danger-outline">Remove folder</button>
+        </div>
+      </aside> -->
+      <div class="content-section">
+        <div class="content-header d-flex flex-row align-center justify-between">
+            <h3 class="content-heading">All links</h3>
+            <div class="d-flex flex-row align-center">
+                <div id="add-links" class="add-button btn btn-outline btn-square d-flex align-center justify-center">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        <div id="search-box" class="search-box d-flex align-center">
+          <i class="fas fa-search"></i>
+  
+          <input type="text" placeholder="Search"/>
+          <i id="clear-button" class="fas fa-times"></i>
+        </div>
+        <div class="link-lists">
+          <div class="link-card">
+            <h4 class="link-title">Tes</h4>
+            <i class="fas fa-link link-icon"></i>
+            <div class="list">
+               <ul>
+                 <li><a href="https://www.w3schools.com">https://www.w3schools.com</a></li>
+                <li><a href="https://www.javascript.comcom">https://www.javascript.com</a></li>
+               </ul>
+            </div>
+            <i class="fas fa-info-circle desc-icon"></i>
+            <div class="desc">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repudiandae explicabo ipsa at perferendis voluptates? Illum nobis sint tenetur officia eligendi reprehenderit dolorem ut pariatur, explicabo exercitationem laudantium ab voluptatum.</p>
+            </div>
+            <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
+          </div>
+          <div class="link-card">
+            <h4 class="link-title">Box-shadow w3schools</h4>
+            <i class="fas fa-link link-icon"></i>
+            <div class="list">
+              <ul>
+                <li><a href="https://www.w3schools.com">https://www.w3schools.com</a></li>
+                <li><a href="https://www.youtube.com">https://www.youtWADWAD.com</a></li>
+              </ul>
+            </div>
+            <i class="fas fa-info-circle desc-icon"></i>
+            <div class="desc">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum non a quibusdam, mollitia aperiam error expedita consequatur aliquid doloremque minus magnam illo dolorem quas? Corporis nesciunt fugiat voluptas ab aut!
+              Quod neque vel incidunt! Optio laboriosam excepturi mollitia placeat. Tempora accusantium eaque odio error eveniet quasi unde ex magni sit sint harum alias voluptatum, quaerat quod corrupti mollitia quo? Accusantium?</p>
+            </div>
+            <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
+          </div>
+          <div class="link-card">
+            <h4 class="link-title">Box-shadow w3schools</h4>
+            <i class="fas fa-link link-icon"></i>
+            <div class="list">
+              <ul>
+                <li><a href="https://www.w3schools.com">https://www.w3schools.com</a></li>
+                <li><a href="https://www.youtube.com">https://www.youtube.com</a></li>
+                <li><a href="https://www.youtube.com">https://www.wfafwafagoowwfawofiahfiowahfoawgle.com</a></li>
+              </ul>
+            </div>
+            <i class="fas fa-info-circle desc-icon"></i>
+            <div class="desc">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repudiandae explicabo ipsa at perferendis voluptates? Illum nobis sint tenetur officia eligendi reprehenderit dolorem ut pariatur, explicabo exercitationem laudantium ab voluptatum.</p>
+            </div>
+            <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
+          </div>
+        </div>
+      </div>
+      <a id="scroll-to-top" class = "fa-button d-flex align-center justify-center">
+        <i class="fas fa-chevron-up"></i>
+      </a>
+    </main>
+
+
+    <footer>
+        Terms and Conditions of Use 
+        <p>Visit github</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/assets/scripts/index.js"></script>
+  </body>
+</html>
