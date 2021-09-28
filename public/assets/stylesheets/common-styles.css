@@ -9,7 +9,11 @@
     border : none;
     color : white;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: background-color 0.2s, color 0.2s;
+    font-size: var(--paragraph);
 }
 
 .btn-green {
@@ -106,13 +110,17 @@
 }
 
 
-input[type=text],input[type=password], textarea {
+input[type=text],input[type=password],input[type=url],input[type=search],textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     resize: none;
     outline: none;
     border: none;
     background-color: transparent;
     width: 100%;
 }
+
 
 input[type=text]:not(input[name=link], #search-box input):focus, textarea:focus{
     background-color: white !important;
@@ -143,4 +151,9 @@ input[type=text]:not(input[name=link], #search-box input):focus, textarea:focus{
 
 .debug {
     border : 1px solid red;
+}
+
+
+.fixfixed {
+    position: absolute !important;
 }

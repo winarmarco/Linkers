@@ -23,25 +23,18 @@
 
     <link rel="stylesheet" href="/assets/stylesheets/styles.css" />
     <link rel="stylesheet" href="/assets/stylesheets/common-styles.css" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
-
-    <title>Document</title>
+    <title>Linkers.</title>
   </head>
   <body>
     <div id = "overlay" class="overlay"></div>
 
     <nav class = "nav-bar d-flex flex-row align-center justify-between">
-    <!-- <div id = "sidebar-toggle" class="sidebar-toggle">
-        <i class="fas fa-bars"></i>
-    </div> -->
-      <div class="nav-logo"><h1>Linkers.</h1></div>
-      <ul class="nav-items d-flex flex-row">
-        <li class="nav-link">
-          <button id ="t" href="" class="btn btn-green">Sign in</button>
-        </li>
-        <li class="nav-link">
-          <button href="" class="btn btn-outline btn-green">Sign up</button>
-        </li>
+      <div class="nav-logo"><a href="/links"><h1>Linkers.</h1></a></div>
+        <ul class="nav-items d-flex flex-row">
+          <i id="user-icon" class="fas fa-user-circle"></i>
+        </ul>
       </div>
     </nav>
 
@@ -49,12 +42,14 @@
       <div class="footer-popup-content">Copied to clipboard</div>
     </div>
 
-<!-- 
-    <i class="fas fa-link"></i>
-    <i class="fas fa-info-circle"></i>
-    <i class="far fa-share-square"></i>
-    <i class="fas fa-search"></i>
-    <i class="fas fa-times"></i> -->
+    
+    <div id="nav-expand" class="modal-wrapper">
+      <div class="nav-expand">
+        <a href="/"><div class="nav-expand-link">Account Settings</div></a>
+        <a href="/logout"><div class="nav-expand-link">Sign out</div></a>
+      </div>
+    </div>
+
     <div id="create-modal" class="modal-wrapper">
       <div class="modal">
         <div class="content-header">
@@ -62,7 +57,7 @@
           <h3 class="content-heading">Create new link</h3>
         </div>
         <div class="form-wrapper">
-          <form name="myForm" action="">
+          <form name="myForm" action="/links" method="POST">
               <div class="input-group">
                   <label class="d-flex input-group-label" for="title">Group title **</label>
                   <input class="input title bg-light" type="text" name="title">
@@ -71,15 +66,15 @@
                   <label class="d-flex input-group-label" for="">Links **</label>
                   <div class="link-input-group">
                       <div class="link-input-wrapper bg-light">
-                          <label for="">1.</label>
-                          <input name="link" type="text" placeholder="https://url.com">
+                          <label for="">-</label>
+                          <input name="links" type="url" placeholder="https://url.com">
                       </div>
                       <span class="remove-link-btn"><i class="fas fa-times"></i></span>
                   </div>
                   <div class="link-input-group">
                       <div class="link-input-wrapper bg-light">
-                          <label for="">2.</label>
-                          <input name="link" type="text" placeholder="https://url.com">
+                          <label for="">-</label>
+                          <input name="links" type="url" placeholder="https://url.com">
                       </div>
                       <span class="remove-link-btn"><i class="fas fa-times"></i></span>
                   </div>
@@ -105,7 +100,7 @@
           <h3 class="content-heading">Edit link</h3>
         </div>
         <div class="form-wrapper">
-          <form action="">
+          <form action="links?_method=PUT" method="POST">
               <div class="input-group">
                   <label class="d-flex input-group-label" for="title">Group title</label>
                   <input class="input title bg-light" type="text" name="title" id="title">
@@ -121,7 +116,7 @@
                   <textarea name="description" id="" class="input bg-light" rows="12"></textarea>
               </div>
   
-              <button type="submit" class="btn btn-green">Create</button>
+              <button name="_id" value="" type="submit" class="btn btn-green">Create</button>
           </form>
         </div>
       </div>
@@ -141,9 +136,7 @@
               </ul>
           </div>
           <i class="fas fa-info-circle desc-icon"></i>
-          <div class="desc">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repudiandae explicabo ipsa at perferendis voluptates? Illum nobis sint tenetur officia eligendi reprehenderit dolorem ut pariatur, explicabo exercitationem laudantium ab voluptatum.</p>
-          </div>
+          <div class="desc"></div>
           <div class="content-buttons">
               <button id = "edit-link-button" class="edit-button btn btn-green">
                   <i class="fa fa-edit align-self-center justify-self-center"></i>
@@ -153,10 +146,12 @@
                   <i class="fa fa-share-square align-self-center justify-self-center"></i>
                   <span>Share</span>
               </button>
-              <button class="remove-button btn btn-danger-outline">
+              <form action="/links?_method=DELETE" method="POST">
+                <button name="_id" value="" class="remove-button btn btn-danger-outline">
                   <i class="fa fa-trash align-self-center justify-self-center"></i>
                   <span>Remove</span>
-              </button>
+                </button>
+              </form>
           </div>
         </div>
       </div>
@@ -165,19 +160,6 @@
     
 
     <main class="">
-      <!-- <aside id="sidebar" class="sidebar">
-        <div class="link-folder">
-            <p class="folder selected">School</p>
-            <p class="folder">Travel</p>
-            <p class="folder">School</p>
-            <p class="folder">Travel</p>
-        </div>
-        <div class="folder-button d-flex flex-column">
-            <button class="btn btn-full btn-green">Add new folder</button>
-            <button class="btn btn-full btn-outline">Edit folder</button>
-            <button class="btn btn-full btn-danger-outline">Remove folder</button>
-        </div>
-      </aside> -->
       <div class="content-section">
         <div class="content-header d-flex flex-row align-center justify-between">
             <h3 class="content-heading">All links</h3>
@@ -189,59 +171,32 @@
         </div>
         <div id="search-box" class="search-box d-flex align-center">
           <i class="fas fa-search"></i>
-  
-          <input type="text" placeholder="Search"/>
+          <form action="/links">
+            <input type="search" placeholder="Search" name="q" value="<%=inputBox%>"/>
+          </form>
           <i id="clear-button" class="fas fa-times"></i>
         </div>
         <div class="link-lists">
-          <div class="link-card">
-            <h4 class="link-title">Tes</h4>
-            <i class="fas fa-link link-icon"></i>
-            <div class="list">
-               <ul>
-                 <li><a href="https://www.w3schools.com">https://www.w3schools.com</a></li>
-                <li><a href="https://www.javascript.comcom">https://www.javascript.com</a></li>
-               </ul>
+          <% data.links.forEach((e) => { %>
+            <div name="_id" value="<%=e._id %>"class="link-card">
+              <h4 class="link-title"><%= e.title %></h4>
+              <i class="fas fa-link link-icon"></i>
+              <div class="list">
+                 <ul class="d-flex flex-column">
+                   <% e.links.forEach((link) => { %>
+                    <li><a href="<%=link%>"><%=link%></a></li>
+                   <% }) %> 
+                 </ul>
+              </div>
+              <i class="fas fa-info-circle desc-icon"></i>
+              <pre class="desc"><%= e.description %></pre>
+              <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
             </div>
-            <i class="fas fa-info-circle desc-icon"></i>
-            <div class="desc">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repudiandae explicabo ipsa at perferendis voluptates? Illum nobis sint tenetur officia eligendi reprehenderit dolorem ut pariatur, explicabo exercitationem laudantium ab voluptatum.</p>
-            </div>
-            <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
-          </div>
-          <div class="link-card">
-            <h4 class="link-title">Box-shadow w3schools</h4>
-            <i class="fas fa-link link-icon"></i>
-            <div class="list">
-              <ul>
-                <li><a href="https://www.w3schools.com">https://www.w3schools.com</a></li>
-                <li><a href="https://www.youtube.com">https://www.youtWADWAD.com</a></li>
-              </ul>
-            </div>
-            <i class="fas fa-info-circle desc-icon"></i>
-            <div class="desc">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum non a quibusdam, mollitia aperiam error expedita consequatur aliquid doloremque minus magnam illo dolorem quas? Corporis nesciunt fugiat voluptas ab aut!
-              Quod neque vel incidunt! Optio laboriosam excepturi mollitia placeat. Tempora accusantium eaque odio error eveniet quasi unde ex magni sit sint harum alias voluptatum, quaerat quod corrupti mollitia quo? Accusantium?</p>
-            </div>
-            <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
-          </div>
-          <div class="link-card">
-            <h4 class="link-title">Box-shadow w3schools</h4>
-            <i class="fas fa-link link-icon"></i>
-            <div class="list">
-              <ul>
-                <li><a href="https://www.w3schools.com">https://www.w3schools.com</a></li>
-                <li><a href="https://www.youtube.com">https://www.youtube.com</a></li>
-                <li><a href="https://www.youtube.com">https://www.wfafwafagoowwfawofiahfiowahfoawgle.com</a></li>
-              </ul>
-            </div>
-            <i class="fas fa-info-circle desc-icon"></i>
-            <div class="desc">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, repudiandae explicabo ipsa at perferendis voluptates? Illum nobis sint tenetur officia eligendi reprehenderit dolorem ut pariatur, explicabo exercitationem laudantium ab voluptatum.</p>
-            </div>
-            <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
-          </div>
-        </div>
+          <% }) %> 
+
+          <% if (message) { %> 
+            <%= message %> 
+          <% } %> 
       </div>
       <a id="scroll-to-top" class = "fa-button d-flex align-center justify-center">
         <i class="fas fa-chevron-up"></i>

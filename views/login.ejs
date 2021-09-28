@@ -23,22 +23,20 @@
 
     <link rel="stylesheet" href="/assets/stylesheets/login.css" />
     <link rel="stylesheet" href="/assets/stylesheets/common-styles.css" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
-
-    <title>Document</title>
+    <title>Linkers.</title>
   </head>
   <body>
     <div id="overlay" class="overlay"></div>
 
-    <!-- 
-    <i class="fas fa-link"></i>
-    <i class="fas fa-info-circle"></i>
-    <i class="far fa-share-square"></i>
-    <i class="fas fa-search"></i>
-    <i class="fas fa-times"></i> -->
-
-    <main class="">
-      <div class="flash-message">We couldn't find an account matching the username and password you entered. Please check your usename and password and try again</div>
+    <main>
+      <% if (error) { %>
+        <div class="flash-message">
+        We couldn't find an account matching the username and password you
+        entered. Please check your usename and password and try again
+        </div>
+      <% } %>
       <aside class="side-section d-flex flex-column">
         <h1 class="logo">Linkers.</h1>
         <div class="svg-wrapper d-flex align-center justify-center">
@@ -46,31 +44,36 @@
         </div>
       </aside>
       <div class="form">
-        <h1 class="form-logo">Linkers.</h1>
-        <p class="toggle-register-login text-end">Already a member? <a href="/login.html">Sign in</a></p>
-        <form class= "mx-auto"action="">
-          <h1 class="form-title">Sign up</h1>
+        <h1 class="form-logo">Linkers</h1>
+        <p class="toggle-register-login text-end">
+          Not a member? <a href="/register">Sign up</a>
+        </p>
+        <form class="mx-auto" method="POST" action="/login">
+          <h1 class="form-title">Sign in</h1>
           <div class="input-group">
             <label class="d-flex" for="username">Username</label>
-            <input class="bg-light input" type="text" name="" id="username" />
-          </div>
-          <div class="input-group">
-            <label class="d-flex" for="email">Email</label>
-            <input class="bg-light input" type="text" name="" id="email" />
+            <input class="bg-light input <%=data.username.error && "error"%>" type="text" name="username" id="username" value="<%=(data.username && data.username.value)%>" />
+            <% if (data.username.message) { %> 
+              <span class="validate-error-warning"><%= data.username.message %> </span>
+            <% } %> 
           </div>
           <div class="input-group">
             <div class="label-group d-flex flex-row justify-between">
               <label for="password">Password</label>
-              <a href="">Forgot password?</a>
             </div>
-            <input class="bg-light input" type="password" name="" id="password" />
+            <div class="input-password d-flex flex-row align-center justify-between <%=data.password.error && "error"%>">
+              <input class="bg-light input" type="password" name="password" id="password" value="<%=(data.password && data.password.value)%>" />
+              <i class="far fa-eye-slash password-toggle"></i>
+            </div>
+            <% if (data.password.message) { %> 
+              <span class="validate-error-warning"><%= data.password.message %> </span>
+            <% } %> 
           </div>
 
-          <button class="btn btn-green">Sign up</button>
+          <button class="btn btn-green">Sign in</button>
         </form>
       </div>
     </main>
-
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

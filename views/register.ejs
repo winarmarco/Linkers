@@ -23,14 +23,21 @@
 
     <link rel="stylesheet" href="/assets/stylesheets/login.css" />
     <link rel="stylesheet" href="/assets/stylesheets/common-styles.css" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
-    <title>Document</title>
+
+    <title>Linkers.</title>
   </head>
   <body>
     <div id="overlay" class="overlay"></div>
 
-    <main>
-      <div class="flash-message">We couldn't find an account matching the username and password you entered. Please check your usename and password and try again</div>
+
+    <main class="">
+      <% if (error && error.length) { %>
+        <div class="flash-message">
+          <%=error%>
+        </div>
+      <% } %>
       <aside class="side-section d-flex flex-column">
         <h1 class="logo">Linkers.</h1>
         <div class="svg-wrapper d-flex align-center justify-center">
@@ -39,19 +46,34 @@
       </aside>
       <div class="form">
         <h1 class="form-logo">Linkers.</h1>
-        <p class="toggle-register-login text-end">Not a member? <a href="/register.html">Sign up</a></p>
-        <form class= "mx-auto"action="">
+        <p class="toggle-register-login text-end">Already a member? <a href="/login">Sign in</a></p>
+        <form class= "mx-auto" action="/register" method="POST">
           <h1 class="form-title">Sign up</h1>
           <div class="input-group">
             <label class="d-flex" for="username">Username</label>
-            <input class="bg-light input" type="text" name="" id="username" />
+            <input class="bg-light input <%=data.username.error && "error"%>" type="text" name="username" id="username" value="<%=(data.username && data.username.value)%>" />
+            <% if (data.username.message) { %> 
+              <span class="validate-error-warning"><%= data.username.message %> </span>
+            <% } %> 
+          </div>
+          <div class="input-group">
+            <label class="d-flex" for="email">Email</label>
+            <input class="bg-light input <%=data.email.error && "error"%>" type="text" name="email" id="email" value="<%=(data.email && data.email.value)%>"/>
+            <% if (data.email.message) { %> 
+              <span class="validate-error-warning"><%= data.email.message %> </span>
+            <% } %> 
           </div>
           <div class="input-group">
             <div class="label-group d-flex flex-row justify-between">
               <label for="password">Password</label>
-              <a href="">Forgot password?</a>
             </div>
-            <input class="bg-light input" type="password" name="" id="password" />
+            <div class="input-password d-flex flex-row align-center justify-between <%=data.password.error && "error"%>">
+              <input class="bg-light input" type="password" name="password" id="password" value="<%=(data.password && data.password.value)%>" />
+              <i class="far fa-eye-slash password-toggle"></i>
+            </div>
+            <% if (data.password.message) { %> 
+              <span class="validate-error-warning"><%= data.password.message %> </span>
+            <% } %> 
           </div>
 
           <button class="btn btn-green">Sign up</button>
