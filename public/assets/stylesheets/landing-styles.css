@@ -51,7 +51,7 @@ body {
   overflow-y: overlay;
 }
 
-/* NAVIGATION BAR */
+/* ==================== NAVIGATION BAR ===================*/
 nav {
   padding: 0 10%;
   height: 100px;
@@ -97,7 +97,7 @@ main {
 }
 
 
-/* MAIN-SECTION */
+/* ==================== MAIN-SECTION ===================*/
 main {
   width: 80%;
   margin: 0 auto;
@@ -125,7 +125,7 @@ main div {
   transition: ease-in;
 }
 
-/* FEATURES */
+/* ==================== FEATURES ===================*/
 #features {
     background-color: var(--moderate-green);    
     width: 100%;
@@ -173,7 +173,7 @@ main div {
   width: 1px;
 }
 
-/* TESTIMONIALS */
+/* ==================== TESTIMONIALS ===================*/
 #testimonials {
   display: grid;
   grid-template-areas: 
@@ -252,7 +252,7 @@ main div {
 }
 
 
-/* QUESTION */
+/* ==================== CLOSING ===================*/
 #closing {
   padding: var(--m-12) 15%;
   text-align: center;
@@ -266,6 +266,7 @@ main div {
   margin-bottom: var(--m-3);
 }
 
+/* ==================== FOOTER ===================*/
 footer {
   height: 100px;
   width: 100vw;
@@ -277,7 +278,7 @@ footer {
   align-items: center;
 }
 
-/* MOBILE */
+/* ==================== MOBILE===================*/
 @media screen and (max-width: 950px) {
   body {
     max-width: 100vw;

@@ -1,62 +1,6 @@
 var currentEditting = {};
 
-// sidebar javascripts
-
-// const sideBarToggle = document.querySelector("#sidebar-toggle");
-// const overlay = document.querySelector("#overlay");
-// const sidebar = document.querySelector("#sidebar");
-
-// sideBarToggle.addEventListener("click", function () {
-//   sidebar.classList.add("show");
-//   overlay.classList.add("show");
-// });
-
-// overlay.addEventListener("click", function () {
-//   sidebar.classList.remove("show");
-//   overlay.classList.remove("show");
-// });
-
-$("#user-icon").click(function () {
-  $(".overlay").addClass("show");
-  $("#nav-expand").addClass("show");
-  $("body").addClass("lock");
-  $("#nav-expand .nav-expand").addClass("expand");
-});
-
-
-// scroll-to-top javascript
-const scrollToTopButton = document.querySelector("#scroll-to-top");
-const footer = $("footer");
-const padding = 20;
-
-$(window).scroll(function () {
-  var distanceFromBottom = Math.floor(
-    $(document).height() - $(document).scrollTop() - $(window).height()
-  );
-
-  if (distanceFromBottom <= footer.height()) {
-    $("#scroll-to-top").css(
-      "bottom",
-      footer.height() - distanceFromBottom + 20
-    );
-  } else {
-    $("#scroll-to-top").css("bottom", padding);
-  }
-
-  if (document.documentElement.scrollTop / document.body.scrollHeight > 0.2) {
-    scrollToTopButton.classList.add("show");
-  } else {
-    scrollToTopButton.classList.remove("show");
-  }
-});
-
-scrollToTopButton.addEventListener("click", function () {
-  this.classList.remove("show");
-  document.documentElement.scrollTop = 0;
-});
-
-// add new link form javascript
-
+// NEW LINK INPUT GENERATOR
 function newLinkInput() {
   const newLinkInput = document.createElement("div");
 
@@ -90,29 +34,81 @@ function newLinkInput() {
   return newLinkInput;
 }
 
+
+// TOGGLE NAV EXPAND
+$("#user-icon").click(function () {
+  $(".overlay").addClass("show");
+  $("#nav-expand").addClass("show");
+  $("body").addClass("lock");
+  $("#nav-expand .nav-expand").addClass("expand");
+});
+
+
+// SCROLL TO TOP BUTTON
+const scrollToTopButton = document.querySelector("#scroll-to-top");
+const footer = $("footer");
+const padding = 20;
+
+$(window).scroll(function () {
+  var distanceFromBottom = Math.floor(
+    $(document).height() - $(document).scrollTop() - $(window).height()
+  );
+
+  if (distanceFromBottom <= footer.height()) {
+    $("#scroll-to-top").css(
+      "bottom",
+      footer.height() - distanceFromBottom + 20
+    );
+  } else {
+    $("#scroll-to-top").css("bottom", padding);
+  }
+
+  if (document.documentElement.scrollTop / document.body.scrollHeight > 0.2) {
+    scrollToTopButton.classList.add("show");
+  } else {
+    scrollToTopButton.classList.remove("show");
+  }
+});
+
+scrollToTopButton.addEventListener("click", function () {
+  this.classList.remove("show");
+  document.documentElement.scrollTop = 0;
+});
+
+
+// ADD NEW LINK INPUT PLACEHOLDER
 $("button[name='add-new-link']").click(function (event) {
   event.preventDefault();
   const linkInputGroup = $(this).parent()[0];
+  const linkInputCount = $($(".modal-wrapper.show").find("form")[0]["links"]).length;
 
   $(newLinkInput())
     .hide()
     .insertBefore(linkInputGroup.querySelector("button"))
     .slideDown("slow");
+
+  if (linkInputCount === 1) {
+    $($(".modal-wrapper.show").find("form")[0]).find(".link-input-group .remove-link-btn").removeClass("disabled");
+  }
 });
 
+// REMOVE LINK INPUT PLACEHOLDER
 $(document).on("click", ".remove-link-btn", function () {
-  $(this.parentElement).slideUp("normal", function () {
-    $(this).remove();
-  });
+  const linkInputCount = $($(".modal-wrapper.show").find("form")[0]["links"]).length;
+  if (linkInputCount > 1) {
+    $(this.parentElement).slideUp("normal", function () {
+      $(this).remove();
+    });
+
+    if (linkInputCount === 2) {
+      $($(".modal-wrapper.show").find("form")[0]).find(".link-input-group .remove-link-btn").addClass("disabled");
+    }
+  }
 });
 
-// $("#add-links").click(function () {
-//   $(".overlay").addClass("show");
-//   $(".modal-wrapper").addClass("show");
-//   $(document.body).addClass("lock");
-// });
-
+// CLOSE VIEW MODAL
 $(".modal-wrapper").click(function (event) {
+
   if (!event.target.classList.contains("modal-wrapper")) return;
 
   if (this.id === "nav-expand") {
@@ -127,12 +123,10 @@ $(".modal-wrapper").click(function (event) {
   }
 });
 
+// CLOSE EDIT OR CREATE MODAL
 $(".close-modal, .modal-wrapper").click(function (event) {
-  if (
-    !event.target.classList.contains("modal-wrapper") &&
-    !this.classList.contains("close-modal")
-  )
-    return;
+
+  if ( !event.target.classList.contains("modal-wrapper") && !this.classList.contains("close-modal") ) return;
 
   if (this.classList.contains("show") && this.id === "view-modal") return;
 
@@ -143,22 +137,21 @@ $(".close-modal, .modal-wrapper").click(function (event) {
   var viewWarning = 1;
 
   if (currentModal.attr("id") === "edit-modal") {
-    viewWarning =
-      viewWarning && $(form["title"]).val() === currentEditting["title"];
-    viewWarning =
-      viewWarning &&
-      $(form["description"]).val() == currentEditting["description"];
-    const temp = form["links"];
+    viewWarning = viewWarning && $(form["title"]).val() === currentEditting["title"];
+    viewWarning = viewWarning && $(form["description"]).val() == currentEditting["description"];
 
-    $.map(temp, function (item, index) {
-      viewWarning =
-        viewWarning && $(item).val() === currentEditting["links"][index];
+    const temp = $(form["links"]);
+    var index = 0;
+
+    $.map(temp, function (item) {
+      viewWarning = viewWarning && $(item).val() === currentEditting["links"][index];
+      index = (index + 1 < currentEditting["links"].length) ? index + 1 : index;
     });
   }
 
   if (currentModal.attr("id") === "create-modal") {
     viewWarning = viewWarning && $(form["title"]).val().length === 0;
-    const temp = form["link"];
+    const temp = $(form["link"]);
     $.map(temp, function (item) {
       formIsEmpty = viewWarning && $(item).val().length === 0;
     });
@@ -169,11 +162,7 @@ $(".close-modal, .modal-wrapper").click(function (event) {
   }
 
   if (!viewWarning) {
-    const confirmClose = confirm(
-      `Cancel ${
-        currentModal.attr("id") === "edit-modal" ? "editing" : "creating"
-      }?\nChanges you made may not be saved`
-    );
+    const confirmClose = confirm(`Cancel ${currentModal.attr("id") === "edit-modal" ? "editing" : "creating"}?\nChanges you made may not be saved`);
 
     if (confirmClose) {
       const form = $(`#${currentModal.attr("id")} form`)[0];
@@ -204,6 +193,8 @@ $(".close-modal, .modal-wrapper").click(function (event) {
   $(document.body).removeClass("lock");
 });
 
+
+// CLEAR FORM AFTER POSTING LINKS TO SERVER
 $("#add-links").click(function () {
   $(".overlay").addClass("show");
   $("#create-modal").addClass("show");
@@ -228,7 +219,8 @@ $(".link-card").click(function () {
   $(document.body).addClass("lock");
 });
 
-// EDIT FUNCTION
+
+// PASSING LINK TO EDIT FORM
 $("#edit-link-button").click(function () {
   const currentLink = $("#view-modal");
 
@@ -249,24 +241,31 @@ $("#edit-link-button").click(function () {
   $(editForm).find(".link-input-group").remove();
 
   currentEditting["title"] = title;
-  currentEditting["description"] = description;
+  currentEditting["description"] = ($(currentLink).find(".desc").attr("data-desc") == "none") ? "" : description;
   currentEditting["links"] = [];
 
   list.each(function (index) {
     const temp = $(linkInput).clone();
     temp.find("label").text("-");
     temp.find("input[type=url]").attr("value", $(this).find("a").text());
+
+    if (list.length === 1) {
+      temp.find(".remove-link-btn").addClass("disabled");
+    }
+
     $(temp).insertBefore($(editForm).find("button[name='add-new-link']")[0]);
     currentEditting["links"].push($(this).find("a").text());
   });
 
-  $(editForm).find("textarea").val(description);
+  $(editForm).find("textarea").val(currentEditting["description"]);
   $(editForm).find(".btn").val($(this).attr("value"));
 
   $("#edit-modal").addClass("show");
   $(document.body).addClass("lock");
 });
 
+
+// VALIDATE FORM
 $("button[type=submit]").click(function (e) {
   const form = this.form;
 
@@ -279,14 +278,10 @@ $("button[type=submit]").click(function (e) {
 
   var validated = 1;
 
-  // validate-form
-
   if (title.length === 0) {
     $(form["title"]).addClass("validate-error");
 
-    if (
-      $(form["title"]).parent().find(".validate-error-warning").length === 0
-    ) {
+    if ($(form["title"]).parent().find(".validate-error-warning").length === 0) {
       const span = document.createElement("span");
       $(span).text("This field is required");
       $(span).addClass("validate-error-warning");
@@ -316,14 +311,15 @@ $("button[type=submit]").click(function (e) {
   }
 });
 
-const textArea = $("textarea");
-
+// FOCUS LISTENER
 $(".input , .link-input-group, textarea").click(function (e) {
   if (this.classList.contains("link-input-group")) {
     $(this.querySelector("input[type=text]")).focus();
   }
 });
 
+
+// INPUT LISTENER
 $(".input, .link-input-group").on("input", function () {
   if (this.classList.contains("link-input-group")) {
     if ($(this).find(".validate-error").length !== 0) {
@@ -339,9 +335,13 @@ $(".input, .link-input-group").on("input", function () {
   }
 });
 
+// COPY LINK TO USER'S CLIPBOARD
 $(".share-button").click(function (e) {
+
   e.stopPropagation();
+
   const footerPopUp = $(".footer-popup");
+  const textArea = $("textarea");
 
   footerPopUp.addClass("show");
 

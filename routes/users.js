@@ -11,11 +11,11 @@ router.route("/login")
     .get(user.renderLogin)
     .post(validateLogin, user.login);
 
-router
-    .route("/register")
+router.route("/register")
     .get(user.renderRegister)
     .post(validateRegister, user.register);
 
-router.route("/logout").get(catchAsync(user.logout));
+router.route("/logout")
+    .get(catchAsync(user.logout));
 
 module.exports = router;

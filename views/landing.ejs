@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Save all you links with ease.Group all your related links easily efficiently">
+    <meta name="keywords" content="Linkers, Link saver, Save link, Url saver, Save url, Online link saver,">
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,13 +33,16 @@
   <body>
     <nav class = "nav-bar d-flex flex-row align-center justify-between">
         <div class="nav-logo"><a href=""><h1>Linkers.</h1></a></div>
-        <ul class="nav-items d-flex flex-row">
-        <li class="nav-link">
-            <a id ="t" href="/login" class="btn btn-green">Sign in</a>
-        </li>
-        <li class="nav-link">
-            <a href="/register" class="btn btn-outline btn-green">Sign up</a>
-        </li>
+        <% if (!loggedIn) { %> 
+            <ul class="nav-items d-flex flex-row">
+                <li class="nav-link">
+                    <a id ="t" href="/login" class="btn btn-green">Sign in</a>
+                </li>
+                <li class="nav-link">
+                    <a href="/register" class="btn btn-outline btn-green">Sign up</a>
+                </li>
+            </ul>
+        <% } %> 
         </div>
     </nav>
 
@@ -115,7 +120,7 @@
 
     <footer>
         Terms and Conditions of Use 
-        <p>Visit github</p>
+        <a href="https://github.com/winarmarco/Linkers">Visit github</a>
     </footer>
   </body>
 </html>

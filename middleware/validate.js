@@ -52,7 +52,7 @@ module.exports.validateRegister = (req, res, next) => {
       };
     });
 
-    return res.render("register", { data: errorData });
+    return res.render("register", { data: errorData, error : {} });
   }
 
   next();

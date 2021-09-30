@@ -26,7 +26,7 @@ module.exports.login = (req,res,next) => {
 
 
 module.exports.renderRegister = (req, res) => {
-  res.render("register", {data : {username : {}, email : {}, password : {}}});
+  res.render("register", {data : {username : {}, email : {}, password : {}}, error: ""});
 };
 
 module.exports.register = async (req, res) => {

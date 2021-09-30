@@ -7,8 +7,7 @@ const userSchema = new mongoose.Schema({
     {
       title: { type: String, required: true },
       links: [{ type: String, required: true }],
-      description: { type: String },
-      default: [],
+      description: { type: String ,default: ""},
     },
   ],
 });

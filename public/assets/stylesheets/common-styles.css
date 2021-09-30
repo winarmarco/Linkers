@@ -1,159 +1,163 @@
 /* COMMONLY USED */
 .btn {
-    text-decoration: none;
-    outline : none;
-    width: 120px;
-    height: 36px;
-    border-radius : 5px;
-    outline : none;
-    border : none;
-    color : white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s, color 0.2s;
-    font-size: var(--paragraph);
+  text-decoration: none;
+  outline: none;
+  width: 120px;
+  height: 36px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: var(--paragraph);
 }
 
 .btn-green {
-    background-color: var(--moderate-green);
+  background-color: var(--moderate-green);
 }
 
 .btn-green:hover {
-    background-color: var(--dark-green);
+  background-color: var(--dark-green);
 }
 
 .btn-danger-outline {
-    border: 1px var(--danger-red) solid;
-    background-color: transparent;
-    color: var(--danger-red);
+  border: 1px var(--danger-red) solid;
+  background-color: transparent;
+  color: var(--danger-red);
 }
 
 .btn-danger-outline:hover {
-    background-color: var(--danger-red);
-    color: white;
+  background-color: var(--danger-red);
+  color: white;
 }
 
 .btn-full {
-    width: 100%;
+  width: 100%;
 }
 
 .btn-outline {
-    background-color: transparent;
-    border : 1px solid var(--moderate-green);
-    color : var(--moderate-green);
+  background-color: transparent;
+  border: 1px solid var(--moderate-green);
+  color: var(--moderate-green);
 }
 
 .btn-outline:hover {
-    background-color: var(--light-grey);
+  background-color: var(--light-grey);
 }
 
 .btn-square {
-    width: 36px;
+  width: 36px;
 }
 
 .d-flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .flex-row {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .align-center {
-    align-items : center
+  align-items: center;
 }
 
 .align-start {
-    align-items: start;
+  align-items: start;
 }
 
 .align-end {
-    align-items: end;
+  align-items: end;
 }
 
 .justify-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .justify-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .justify-end {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .align-self-center {
-    align-self: center;
+  align-self: center;
 }
 
 .align-self-end {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 .justify-self-center {
-    justify-self: center;
+  justify-self: center;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .text-end {
-    text-align: end;
+  text-align: end;
 }
 
-
-input[type=text],input[type=password],input[type=url],input[type=search],textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    resize: none;
-    outline: none;
-    border: none;
-    background-color: transparent;
-    width: 100%;
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="search"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  resize: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
 }
 
-
-input[type=text]:not(input[name=link], #search-box input):focus, textarea:focus{
-    background-color: white !important;
-    border : 1px solid var(--blur);
+input[type="text"]:not(input[name="link"], #search-box input):focus,
+textarea:focus {
+  background-color: white !important;
+  border: 1px solid var(--blur);
 }
 
 .link-input-wrapper:focus-within {
-    background-color: white !important;
-    border: 1px solid var(--blur);
+  background-color: white !important;
+  border: 1px solid var(--blur);
 }
 
 .bg-light {
-    background-color: var(--light-grey) !important;
+  background-color: var(--light-grey) !important;
 }
 
 .ml-auto {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .mr-auto {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .mx-auto {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .debug {
-    border : 1px solid red;
+  border: 1px solid red;
 }
-
 
 .fixfixed {
-    position: absolute !important;
+  position: absolute !important;
 }
+
+

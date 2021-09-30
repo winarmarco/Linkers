@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Save all you links with ease.Group all your related links easily efficiently">
+    <meta name="keywords" content="Linkers, Link saver, Save link, Url saver, Save url, Online link saver,">
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,8 +30,11 @@
     <title>Linkers.</title>
   </head>
   <body>
+
+    <!-- MODAL OVERLAY -->
     <div id = "overlay" class="overlay"></div>
 
+    <!-- NAVIGATION BAR -->
     <nav class = "nav-bar d-flex flex-row align-center justify-between">
       <div class="nav-logo"><a href="/links"><h1>Linkers.</h1></a></div>
         <ul class="nav-items d-flex flex-row">
@@ -42,7 +47,7 @@
       <div class="footer-popup-content">Copied to clipboard</div>
     </div>
 
-    
+    <!-- NAV EXPAND -->
     <div id="nav-expand" class="modal-wrapper">
       <div class="nav-expand">
         <a href="/"><div class="nav-expand-link">Account Settings</div></a>
@@ -50,6 +55,7 @@
       </div>
     </div>
 
+    <!-- CREATE LINK MODAL -->
     <div id="create-modal" class="modal-wrapper">
       <div class="modal">
         <div class="content-header">
@@ -57,10 +63,10 @@
           <h3 class="content-heading">Create new link</h3>
         </div>
         <div class="form-wrapper">
-          <form name="myForm" action="/links" method="POST">
+          <form name="myForm" action="/links" method="POST" autocomplete="off">
               <div class="input-group">
                   <label class="d-flex input-group-label" for="title">Group title **</label>
-                  <input class="input title bg-light" type="text" name="title">
+                  <input class="input title bg-light" type="text" name="title" auto>
               </div>
               <div name="link-input" class="input-group">
                   <label class="d-flex input-group-label" for="">Links **</label>
@@ -93,6 +99,7 @@
       </div>
     </div>
 
+    <!-- EDIT MODAL -->
     <div id="edit-modal" class="modal-wrapper">
       <div class="modal">
         <div class="content-header">
@@ -100,7 +107,7 @@
           <h3 class="content-heading">Edit link</h3>
         </div>
         <div class="form-wrapper">
-          <form action="links?_method=PUT" method="POST">
+          <form action="links?_method=PUT" method="POST" autocomplete="off">
               <div class="input-group">
                   <label class="d-flex input-group-label" for="title">Group title</label>
                   <input class="input title bg-light" type="text" name="title" id="title">
@@ -122,6 +129,7 @@
       </div>
     </div>
 
+    <!-- VIEW MODAL -->
     <div id="view-modal" class="modal-wrapper">
       <div class="modal">
         <div class="content-header">
@@ -158,8 +166,8 @@
     </div>
 
     
-
-    <main class="">
+    <!-- MAIN SECTION -->
+    <main>
       <div class="content-section">
         <div class="content-header d-flex flex-row align-center justify-between">
             <h3 class="content-heading">All links</h3>
@@ -189,7 +197,7 @@
                  </ul>
               </div>
               <i class="fas fa-info-circle desc-icon"></i>
-              <pre class="desc"><%= e.description %></pre>
+              <pre class="desc" data-desc="<%= (e.description.length === 0) ? "none" : "" %>"><%= (e.description.length == 0) ? "-" : e.description %></pre>
               <i class="fa fa-share-square share-button align-self-center justify-self-center"></i>
             </div>
           <% }) %> 
@@ -203,10 +211,10 @@
       </a>
     </main>
 
-
+    <!-- FOOTER SECTION -->
     <footer>
         Terms and Conditions of Use 
-        <p>Visit github</p>
+        <a href="https://github.com/winarmarco/Linkers">Visit github</a>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

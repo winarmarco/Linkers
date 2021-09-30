@@ -51,48 +51,6 @@ body {
   background-color: white;
 }
 
-/* NAVIGATION BAR */
-nav {
-  padding: 0 var(--m-6);
-  height: 100px;
-  width: 100vw;
-  background-color: white;
-  box-shadow: var(--shadow) 0 4px 4px 0;
-  position: relative;
-  z-index: 99;
-}
-
-.nav-logo {
-  width: 100%;
-}
-
-.nav-logo a {
-  text-decoration: none;
-}
-
-.nav-logo a:visited {
-  color: var(--moderate-green);
-}
-
-.nav-logo h1 {
-  font-size: var(--title);
-  font-family: "DM Serif Text", serif;
-}
-
-.fa-bars {
-  display: none;
-}
-
-ul {
-  list-style: none;
-}
-
-.nav-link {
-  margin: 0 var(--m-2);
-}
-
-
-
 /* ==================== MAIN SECTION ===================*/
 main {
   display: grid;
@@ -139,7 +97,7 @@ main {
   max-width: 500px;
 }
 
-/* form */
+/* FORM */
 .form {
   grid-area: main;
   align-items: center;
@@ -210,7 +168,7 @@ a {
   background-color: white !important;
 }
 
-.input[type=password]:focus {
+.input[type="password"]:focus {
   background-color: white !important;
 }
 
@@ -236,39 +194,7 @@ a {
   margin-top: var(--m-6);
 }
 
-/* floating action button */
-.fa-button {
-  position: sticky;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  bottom: var(--m-6);
-  right: var(--m-6);
-  background-color: var(--moderate-green);
-  color: white;
-  opacity: 0;
-  display: none;
-  transition: 0.2s opacity;
-}
-
-.fa-button.show {
-  display: flex;
-  opacity: 100%;
-}
-
-/* =========== FOOTER ========== */
-footer {
-  display: none;
-  height: 100px;
-  width: 100vw;
-  padding: 0 var(--m-5);
-  background-color: #909090;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/* ==================== MOBILE ===================*/
 @media screen and (max-width: 950px) {
   main {
     grid-template-areas:
@@ -297,4 +223,3 @@ footer {
     display: none !important;
   }
 }
-

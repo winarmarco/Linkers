@@ -1,3 +1,4 @@
+// INPUT LISTENER
 $("input").keyup(function () {
   if (this.value.length > 0) {
     $(this).addClass("inputted");
@@ -6,6 +7,7 @@ $("input").keyup(function () {
   }
 });
 
+// PASSWORD REVEAL TOGGLER
 $(".password-toggle").click(function () {
   if (this.classList.contains("fa-eye")) {
     $(this).removeClass("fa-eye fas");

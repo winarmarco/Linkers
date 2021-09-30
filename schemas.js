@@ -41,14 +41,14 @@ module.exports.userSchema = Joi.object({
     "string.empty": "Email is required",
   }),
   password: Joi.string()
-    .pattern(/^[a-zA-Z0-9]{3,30}$/)
+    .pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
     .required()
     .escapeHTML()
     .messages({
       "any.required": "Password is required",
       "string.empty": "Password is required",
       "string.pattern.base":
-        "Password should be 3 - 30 characters and contain letters and numbers",
+        "Password should be at least 8 characters and contains uppercase, lowercase, and numbers",
     }),
 });
 module.exports.loginSchema = Joi.object({
@@ -68,10 +68,10 @@ module.exports.linkSchema = Joi.object({
     "any.required": "Title is required",
   }),
   links: Joi.array().items(
-    Joi.string().required().uri().escapeHTML().messages({
+    Joi.string().required().uri().messages({
       "any.required": "{{#label}} is required",
       "string.uri": "Links with value {:[.]} is invalid",
     })
   ),
-  description: Joi.string().escapeHTML(),
+  description: Joi.string().escapeHTML().allow("").optional(),
 });
