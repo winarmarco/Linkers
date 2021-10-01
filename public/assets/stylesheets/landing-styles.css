@@ -278,6 +278,11 @@ footer {
   align-items: center;
 }
 
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
 /* ==================== MOBILE===================*/
 @media screen and (max-width: 950px) {
   body {
